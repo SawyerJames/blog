@@ -1,0 +1,22 @@
+# Tribute Renge provides support for templatess.
+# Please install jekyll-paginate before build it.
+# sudo gem install jekyll-paginate in linux or MacOS.
+# gem install jekyll-paginate in Windows.
+
+# Sawyer supports categories and tags, which are defined in each of your posts.
+# Also, You can add or removed links in /_includes/sider.html .
+# please change the belowing settings to your own.
+
+# Site settings
+title: SawyerJames
+email: sawyerjames0211@gmail.com
+baseurl: "/blog" # the subpath of your site, e.g. /blog
+url: "https://sawyerjames.github.io/blog/" # the base hostname & protocol for your site
+twitter_username: SawyerJames
+github_username:  SawyerJames
+
+# Build settings
+markdown: kramdown
+paginate: 3
+gems: [jekyll-paginate]
+paginate_path: "/page/:num"
