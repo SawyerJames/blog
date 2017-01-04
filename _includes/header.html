@@ -7,7 +7,7 @@
             <h3 class="text-left">
               <strong><a href="{{ site.url }}" id="blog-title">SawyerJames-博客</a></strong>
                 <div class="icon-small">
-               	    <a href="https://github.com/{{ include.username }}"><img src="/images/github.gif" alt="github-icon" /><span class="username">{{ include.username }}</span></a>
+               	    <a href="https://github.com/{{ include.username }}"><img src="{{ site.url }}/images/github.gif" alt="github-icon" /><span class="username">{{ include.username }}</span></a>
                 </div>
            	    <div class="icon-small">
            	   		<a href="https://twitter.com/{{ include.username }}"><img src="/images/twitter.gif" alt="twitter-icon" /><span class="username">{{ include.username }}</span></a>
@@ -24,8 +24,8 @@
           <!-- sub menu -->
           <ul class="navbar navbar-default" role="navigation">
             <div id="nav-tags" class="navbar-header navbar-right">
-              <a class="nav navbar-brand nav-side" href="/blog">主页</a>
-              <a class="nav navbar-brand nav-side" href="/blog/about" >关于博主</a>
+              <a class="nav navbar-brand nav-side" href="{{ site.baseurl }}">主页</a>
+              <a class="nav navbar-brand nav-side" href="{{ site.baseurl }}/about" >关于博主</a>
               <p class="nav navbar-brand " id="slogan">技术源于生活，技术改变生活________||&nbsp&nbsp&nbsp</p>
             </div>
           </ul>
