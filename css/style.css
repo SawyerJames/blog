@@ -1,5 +1,5 @@
 body{
-	background: url({{ site.url }}images/back.jpg);
+	background: url(https://sawyerjames.github.io/blog/images/back.jpg);
 	background-repeat: no-repeat;
 	background-size: cover;
 	font-family: Microsoft YaHei;
