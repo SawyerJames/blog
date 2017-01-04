@@ -1,0 +1,111 @@
+body{
+	background:url('/images/back.jpg');
+	background-repeat: no-repeat;
+	background-size: cover;
+	font-family: Microsoft YaHei;
+}
+p{
+	color: #FFFFFF;
+}
+a{
+	text-decoration: none;
+}
+#blog-title{
+	color: #F6F404;
+}
+#blog-title:hover{
+	color: #13A0E7;
+}
+.icon-small{
+	display: inline;
+}
+.icon-small img{
+	width: 25px;
+	height: 25px;
+    margin-left: 10px;
+}
+.nav-side{
+	display: inline-block;
+    color: #2E2C2C;
+    font-weight: bold;
+}
+#nav-tags a:hover{
+	color: #FC123D;
+    font-weight: bold;
+}
+#slogan{
+	color: #3B8EF7;
+    font-weight: bold;
+}
+.tags{
+	color:#FFFFFF;
+}
+.tag-list{
+	color: #C2C1C1;
+	border-radius: 5px;
+    font-weight: bold;
+}
+.tag-list:hover{
+	color: #3B8EF7;
+	border: none;
+}
+.tag-btn{
+	display: block;
+	padding: 3px 0 3px 15px;
+}
+
+.post-title{
+	color: #FAA241;
+	font-size: 22px;
+}
+.post-title:hover{
+	color: #3B8EF7;
+}
+.small-title{
+	color: #C2C1C1;
+}
+.small-title:hover{
+	color: #3B8EF7;
+}
+.date-style{
+	color: #F6F404;
+}
+.post-content{
+	color: #D3D3D3;
+}
+.catalog-title{
+	color: #FAA241;
+}
+.catalog-a{
+	color: #D3D3D3;
+}
+.catalog-a:hover{
+	text-decoration: none;
+	color: #3B8EF7;
+}
+.list-group{
+	display: inline-block;
+	float: right;
+	width: 773px;
+	height: auto;
+	border: 1px solid #F0F0F0;
+	border-radius: 4px;
+	padding: 5px 10px 5px 0;
+	margin-bottom: 1px;
+	background: #F4F0F0;
+}
+#list-icon{
+	float: left;
+	position: relative;
+	left: 10px;
+	width: 22px;
+	height: 22px;
+}
+.list-a{
+	color: #272727;
+}
+.list-a:hover{
+	color: #3B8EF7;
+	font-weight: bold;
+	text-decoration: none;
+}

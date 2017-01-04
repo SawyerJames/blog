@@ -1,0 +1,19 @@
+<div class="col-xs-2 span3">
+  <ul class="nav nav-list">
+<hr>
+    <li class="nav-header tags"><big><b>Catalog</b></big></li>
+      {% for category in site.categories %}
+        <li><a href="/category/#{{ category[0] }}" class="tag-list">{{ category[0] }}</a></li>
+      {% endfor %}
+      <hr>
+    <li class="nav-header tags"><big><b>Tag</b></big></li>
+
+    {% for tag in site.tags %}
+        <big class="tag-btn"><a class="label label-info" href="/tags/#{{ tag[0] }}">{{ tag[0] }}</a></big>
+    {% endfor %}
+    <hr>
+      <li class="nav-header tags"><big><b>Link</b></big></li>
+    <li><a href="https://www.google.com" target="_blank" class="tag-list">Google</a></li>
+    <li><a href="https://www.baidu.com" target="_blank" class="tag-list">百度一下</a></li>
+  </ul>
+</div>
