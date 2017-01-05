@@ -37,6 +37,10 @@ a{
 	color: #3B8EF7;
     font-weight: bold;
 }
+.listbtn{
+	width: 25px;
+	height: 25px;
+}
 .tags{
 	color:#FFFFFF;
 }
