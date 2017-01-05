@@ -24,9 +24,9 @@ layout: default
 
 <ul class="pager">
   {% if paginator.previous_page %}
-      <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="{{ site.url}}images/prev.gif" alt="prvebtn" />前のページ</a></li>
+      <li class="previous"><a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="{{ site.url}}images/prev.gif" alt="prvebtn" /></a></li>
   {% endif %}
     {% if paginator.next_page %}
-      <li class="next"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">次のページ<img src="{{ site.url}}images/next.gif" alt="nextbtn" /></a></li>
+      <li class="next"><a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}"><img src="{{ site.url}}images/next.gif" alt="nextbtn" /></a></li>
   {% endif %}
 </ul>
