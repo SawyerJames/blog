@@ -1,0 +1,45 @@
+---
+layout: post
+title: gitbub与jekyll 搭建博客
+categories: skill
+tags: 网站技术
+---
+<p>Github作为“全球最大同性交友网站”，用户量自然可想而知。如果你想要拥有一个属于自己的，免费的Blog，Github会给你提供更好的选择。</p>
+<p>本文的基础技术建立在阮一峰-<a href="http://www.ruanyifeng.com/blog/2012/08/blogging_with_jekyll.html">搭建一个免费的，无限流量的Blog----github Pages和Jekyll入门</a>,没有看过这篇blog的童鞋请自行补课。同时本文提供一些常见的问题解决方法。</p>
+<p>在gh-page分支搭建了基础博客之后，是不是无从下手了呢？是不是每次查看Blog都要经过add,commit,push的耗时方法令你抓狂？Jekyll可以提供完全本地可视化的实时监控，为你搭建blog节省大量时间。</p>
+<p>本文只针对Windows版本进行讲解</p>
+<h4>安装Ruby</h4>
+<p>因为Jekyll是基于Ruby编写的，首先当然是先安装ruby环境和ruby包管理工具gem。根据自己系统选择64/32位版本，<a href="http://rubyinstaller.org/downloads/">点击这里下载</a>。下载后需要配置Ruby的环境变量，在系统高级属性中设置系统Path。之后<cd>win+R</cd>调出命令台输入<cd>ruby-v</cd>即可。</p>
+<h4>安装jekyll</h4>
+<p>下载Ruby并配置环境之后会默认安装gem，使用命令台输入<cd>gem install jekyll</cd>安装jekyll。</p>
+<h4>使用jekyll下载blog模板</h4>
+<p><a href="http://jekyllthemes.org/">点击此处</a>下载一个喜欢的Blog模板并解压到本地。对比之前根据阮一峰文章搭建的基础blog，将模板内得到的文件覆盖到基础blog文件夹内。开启Jeykll服务，在命令行内输入<cd>cd blog文件夹名称</cd>进入你的基础blog文件夹，输入<cd>jekyll serve</cd>即可开启本地服务，本地服务开启后，Jekyll服务默认端口是4000，所以我打开浏览器，输入：http://localhost:4000 即可访问自己的Blog。</p>
+<p>我们查看了本地blog在浏览器中的样式后，就可以进入你的blog文件夹中，会发现文件目录变为：<pre><code>├ about.md
+├ _config.yml
+├ css
+│   └ main.scss
+├ feed.xml
+├ _includes
+│   ├ footer.html
+│   ├ header.html
+│   ├ head.html
+│   ├ icon-github.html
+│   ├ icon-github.svg
+│   ├ icon-twitter.html
+│   └ icon-twitter.svg
+├ index.html
+├ _layouts
+│   ├ default.html
+│   ├ page.html
+│   └ post.html
+├ _posts
+│   └ 2016-03-04-welcome-to-jekyll.markdown
+└ _sass
+
+    ├ _layout.scss
+    └ _syntax-highlighting.scss</code></pre>，此时在根目录调出gitbush命令行，进行git,commit,push将其传到你的github项目上，等上传完毕后，进入你之前blog的网址，即可见到你模板化后的Jekyll博客。</p>
+<p>我们进入_post目录，撰写的markdown语法或HTML语法的博文都放在这里。默认会有一篇测试文章：2016-03-04-welcome-to-jekyll.markdown. 你可以将其删除，并上传自己的博文。</p>
+<p>如果你想要更改主题样式，你需要基础的html、css技能以及Jekyll的语法。你可以参考<a href="http://jekyll.com.cn/">Jekyll官方文档</a>进行学习。</p>
+<p>至此，Jekyll的博客搭建完成，恭喜你拥有了一个完全属于自己的个人博客。</p>
+--------------------------------------------------------------------------
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-转载请表明出处</p>
