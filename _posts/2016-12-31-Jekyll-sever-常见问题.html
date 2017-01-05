@@ -1,0 +1,31 @@
+---
+layout: post
+title: Jekyll serve常见问题
+categories: skill
+tags: 网站技术
+---
+<h4>错误1：</h4>
+<p><pre><code>Dependency Error: Yikes! It looks like you don't have jekyll-sitemap or one of its dependencies installed. In order to use Jekyll as currently configured, you'll need to install this gem. The full error message from Ruby is: 'cannot load such file -- jekyll-sitemap' If you run into trouble, you can find helpful resources at http://jekyllrb.com/help/! 
+</code></pre>解决办法：请安装bundler：
+<pre><code>gem install bundler</code></pre>
+然后安装bundle：
+<pre><code>bundle install</code></pre></p>
+<h4>错误2：</h4>
+<p><pre><code>Dependency Error: Yikes! It looks like you don’t have jekyll-paginate or one of its dependencies installed. In order to use Jekyll as currently configured, you’ll need to install this gem. The full error message from Ruby is: ‘cannot load such file – jekyll-paginate’ If you run into trouble, you can find helpful resources at Getting Help
+
+jekyll 3.1.2 | Error: jekyll-paginate</code></pre>解决办法：安装jekyll时候直接运行<pre><code>gem install jekyll-paginate</code></pre>即可解决。</p>
+<h4>错误3：</h4>
+<p><pre><code>Dependency Error: Yikes! It looks like you don't have redcarpet or one of its
+dependencies installed. In order to use Jekyll as currently configured, you'll n
+eed to install this gem. The full error message from Ruby is: 'cannot load such
+file -- redcarpet' If you run into trouble, you can find helpful resources at ht
+tp://jekyllrb.com/help/!
+  Conversion error: Jekyll::Converters::Markdown encountered an error while conv
+erting '_posts/2014-12-28-first-blog.md':
+redcarpet
+ ERROR: YOUR SITE COULD NOT BE BUILT:
+redcarpet</code></pre>解决办法：解决办法：_config.yml中的markdown改为kramdown即可</p>
+<h4>错误4：</h4>
+<p><pre><code>jekyll serve: erro '/' not found</code></pre>解决办法：开启jekyll serve服务时，输入：<pre><code>jekyll serve --baseurl</code></pre>即可解决。</p>
+------------------------------------
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-转载请表明出处</p>
