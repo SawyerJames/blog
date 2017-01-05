@@ -9,3 +9,20 @@
 .article a{
 	color: #F6F404;
 }
+h4{
+	color: #F15D6C;
+}
+/*自定义标签*/
+cd{
+	color: #5EDDE1;
+	border: 1px solid #5EDDE1;
+	border-radius: 4px;
+	margin:4px; 
+}
+txt{
+	display: inline-block;
+	border-radius: 3px;
+	padding:0 4px;
+	margin: 4px 10px;
+	border: 1px solid #DBD7D7;
+}
