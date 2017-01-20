@@ -34,14 +34,14 @@ tags: web技术
 			conf = $.extend(conf, arg);
 		}	
 	//--moudle alert--//
-		$box = $('<div class="alert">'+
+		<!-- $box = $('<div class="alert">'+
 					'<div class="alert-title">'+ conf.title +'</div>'+
 					'<div class="alert-content">'+
 						'<button class="alert-confirm">PlanOK</button>'+
 						'<button class="alert-cancel">再等等</button>'+
 					'</div>'
 				+'</div>');
-		$mask = $('<div class="alert-mask"></div>');
+		$mask = $('<div class="alert-mask"></div>'); -->
 		$body.prepend($mask);
 		$body.prepend($box);
 		$alert_confirm = $('.alert-confirm');
