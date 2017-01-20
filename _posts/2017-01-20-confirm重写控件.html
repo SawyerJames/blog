@@ -1,0 +1,153 @@
+---
+layout: post
+title: confirm重写 弹出框控件
+categories: skill
+tags: web技术
+---
+<h4>自定义弹出框控件</h4>
+<p>不得不说，浏览器自带的confirm, alert等功能很强大，及时性良好，但是样式上却难以满足审美要求越来越高的客户浏览者。为此，重写了一份还算好用，样式上可以进行更改的，简便迅捷的弹出框。它支持传入参数来更改弹出框标题、重构CSS更换样式、确认执行及取消按键功能、点击空白处取消功能。结构上仅由三层div包裹，JS及时插入，不会对body带来不必要的结构上影响。</p>
+<txt>此控件需加载jQuery 1.10以上版本环境。</txt>
+<p>其基础样式为：(当然，相信你会有自己的设计方案)</p>
+<img src="images/alert.jpg" class="img" alt="alert.jpg" />
+<p>话不多说，以下贴出代码，供君参考。</p>
+<pre><code>
+	//--My_confirm.js--//
+	function My_confirm(arg){
+		if (!arg) {
+			console.log('error:you forget passed in the argument "arg"');
+		}
+		var conf = {}
+			,$box
+			,$alert_confirm
+			,$alert_cancel
+			,$dfd
+			,$mask
+			,confirmed
+			,timer
+			;
+		$dfd = $.Deferred();
+	//--alert principle--//
+		if (typeof arg == 'string') {
+			conf.title = arg;
+		}
+		else{
+			conf = $.extend(conf, arg);
+		}	
+	//--moudle alert--//
+		$box = $('<div class="alert">'+
+					'<div class="alert-title">'+ conf.title +'</div>'+
+					'<div class="alert-content">'+
+						'<button class="alert-confirm">PlanOK</button>'+
+						'<button class="alert-cancel">再等等</button>'+
+					'</div>'
+				+'</div>');
+		$mask = $('<div class="alert-mask"></div>');
+		$body.prepend($mask);
+		$body.prepend($box);
+		$alert_confirm = $('.alert-confirm');
+		$alert_cancel = $('.alert-cancel');	
+	//--listen alert--//
+		timer = setInterval(function(){
+			if (confirmed !== undefined) {
+				$dfd.resolve(confirmed);
+				clearInterval(timer);
+				dismiss_alert();
+			}
+		},50);
+	//--btn click--//
+		$alert_confirm.on('click',on_confiremd);
+		$alert_cancel.on('click',off_confirmed);
+		$mask.on('click',off_confirmed);
+		function on_confiremd(){
+			confirmed = true;
+		}
+		function off_confirmed(){
+			confirmed = false;
+		}
+	//--dismiss alert--//
+		function dismiss_alert(){
+			$box.remove();
+			$mask.remove();
+		}
+	//--alert adjust position--//
+		function adjust_alert_position(){
+			var win_width = $win.width(),
+				win_height = $win.height(),
+				box_width = $box.width(),
+				box_height =$box.height(),
+				moveX,
+				moveY;
+			moveX = (win_width - box_width)/2;
+			moveY = (win_height - box_height)/2-30;
+			$box.css({
+				left: moveX,
+				top: moveY,
+			});
+		}
+	//--alert position will adjuest when change window--//
+		adjust_alert_position();
+		$win.on('resize', function(){
+			adjust_alert_position();
+		});
+	//--return dfd--//
+		return $dfd.promise();
+	}
+	//-------------------U could rewrite this css------------------//
+	
+	//--My_confirm.css--//
+			.alert{
+			position: fixed;
+			width: 250px;
+			height: 140px;
+			border-radius: 8px;
+			box-shadow: 1px 3px 1px #4B4B4B;
+			-webkit-box-shadow: 1px 3px 1px #4B4B4B;
+			background: #FCFCFC;
+			z-index: 12;
+		}
+		.alert-title{
+			text-align: center;
+			margin: 15px auto;
+			font-size: 18px;
+			font-weight: bold;
+		}
+		.alert-content{
+			background: #FF0000;
+			width: 250px;
+			height: 5px;
+			text-align: center;
+		}
+		.alert-confirm,.alert-cancel{
+			height: 37px;
+			width: 80px;
+			margin-top: 20px;
+			box-shadow: 1px 3px 1px #4B4B4B;
+			-webkit-box-shadow: 1px 3px 1px #4B4B4B;
+			border-radius: 5px;
+			background: #87AAE6;
+			color: #2C2424;
+			font-size: 14px;
+			font-family:'Microsoft YaHei',"SimHei";
+			font-weight: bold;
+		}
+		.alert-confirm{
+			margin-right: 30px;
+		}
+		.alert-mask{
+			position: fixed;
+			top: 0;
+			left: 0;
+			bottom: 0;
+			right: 0;
+			background: #000000;
+			opacity: 0.5;
+			z-index: 11;
+		}
+</code></pre>
+<p>以上，为此控件全部结构。使用只须调用以下代码：</p>
+<pre><code>
+	My_confirm('你传入的参数').then(function(r){
+				r ? 你的功能函数 : null;
+			});
+</code></pre>
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-web技术</p>

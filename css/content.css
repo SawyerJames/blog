@@ -26,3 +26,8 @@ txt{
 	margin: 4px 10px;
 	border: 1px solid #DBD7D7;
 }
+.img{
+	display: inline-block;
+	width: 250px;
+	height: 140px;
+}
