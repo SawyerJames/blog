@@ -1,0 +1,87 @@
+---
+layout: post
+title: 投影检测法
+categories: skill
+tags: web技术
+---
+<h4>投影检测法</h4>
+<p>如果你遇到一些苦于排列的布局问题，比如css文字重合，图片重合一类。js投影检测法可以很快速的帮助你搞定这个问题。它是一种模板。可以让你在设定好的css样式之后，通过js来优化位置。当然，你的元素要拥有绝对定位，才可以检测和重排。</p>
+<p>投影检测法的逻辑很简单，如图，黑色与绿色两个div发生重叠，产生灰色区域。而这块被覆盖的区域并不是我们想要的。我们需要做的，就是调整其中一个div的left与top来分离重叠。但是少量这类关系可以手动实现。而那些不可控的，或者基数很大的div怎么办呢，完全可以使用投影检测法来判定。黑色1、2点为黑色div的两个端点。绿色1、2点为绿色div的两个端点。我们可以获取到两者的两个端点的offset().left，由公式判定是否相交（注：之所以取得offset().left，而非left，是因为也许你的元素初始并没有设置left偏移值。）</p>
+<img src="{{ site.url }}images/投影检测.jpg">
+<p>获取黑白div的各自两个端点</p>
+<pre><code>shadowBlack_x[left,left+width]</code></pre>
+<pre><code>shadowGreen_x[left,left+width]</code></pre>
+<p>基础理论讲完了，话不多说，上代码:</p>
+<pre><code>
+	// 重排元素位置，分隔元素使之不重叠-->>投影检测法
+component.reSort = function(list){
+	// 检测相交
+	function compare(domA,domB){
+		//获取偏移量,不直接选择css-left是因为未定义的left会产生auto
+		var offsetA = $(domA).offset(); 
+		var offsetB = $(domB).offset();
+
+		//获取A,B投影
+		var shadowBlack_x = [offsetA.left, $(domA).width()+offsetA.left];
+		var shadowBlack_y = [offsetA.top, $(domA).height()+offsetA.top];
+		var shadowGreen_x = [offsetB.left, $(domB).width()+offsetB.left];
+		var shadowGreen_y = [offsetB.top, $(domB).height()+offsetB.top];
+
+		//检测--固定公式,相交为true，不相交为false
+		var intersect_x = (shadowBlack_x[0] > shadowGreen_x[0] && shadowBlack_x[0] < shadowGreen_x[1]) || (shadowBlack_x[1] > shadowGreen_x[0] && shadowBlack_x[1] < shadowB_x[1]);
+		var intersect_y = (shadowBlack_y[0] > shadowGreen_y[0] && shadowBlack_y[0] < shadowGreen_y[1]) || (shadowBlack_y[1] > shadowGreen_y[0] && shadowBlack_y[1] < shadowGreen_y[1]);
+		return intersect_x && intersect_y;
+	}
+
+	//重排
+	function resetY(domA,domB){
+		//纵向重排，错开两个元素其中一个height的高度，由于css获取到的top为字符串
+		//则parseInt转换成数值后再相加.
+		if ($(domA).css('top') != 'auto') {
+			$(domA).css('top',parseInt($(domA).css('top')) + $(domB).height());
+		}
+		if ($(domA).css('bottom') != 'auto') {
+			$(domA).css('bottom',parseInt($(domA).css('bottom')) + $(domB).height());
+		}
+		//横向排列，仅供参考
+		// if ($(domA).css('right') != 'auto') {
+		// 	$(domA).css('right',(parseInt($(domA).css('right')) + $(domB).width())/2);
+		// }
+		// if ($(domA).css('left') != 'auto') {
+		// 	$(domA).css('left',(parseInt($(domA).css('left')) + $(domB).width())/2);
+		// }
+	}
+
+	//定义将要重排的元素
+	var willReset = [];
+
+	//循环list列表，i,domTarget均为被循环函数，如果两者相交比较为true，将其中一个放入栈中用于重排
+	//如果超出列表循环范围，取消循环。
+	$.each(list,function(i,domTarget){
+		if (list[i+1]) {
+			compare(domTarget,list[i+1]);
+			if (compare(domTarget,list[i+1])) {
+				willReset.push(domTarget);
+			}
+			// console.log($(domTarget).text(),'和',$(list[i+1]).text(),'是否相交:'+compare(domTarget,list[i+1]));
+		}
+	})
+
+	//从栈中循环元素，使两者重排
+	if (willReset.length > 1) {
+		$.each(willReset,function(i,domA){
+			if (willReset[i+1]) {
+				resetY(domA,willReset[i+1]);
+			}
+		});
+
+		//递归 -->将位置不满足要求的元素重新进行重排
+		component.reSort(willReset);
+	}
+}
+</code></pre>
+<txt>此控件需加载jQuery 1.10以上版本环境。</txt>
+<txt>调用投影检测法只须在写入div的代码中调用component.reSort(@param)方法即可</txt>
+
+
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-转载请表明出处</p>
