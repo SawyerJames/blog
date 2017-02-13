@@ -1,0 +1,47 @@
+---
+layout: post
+title: Vue.js组件的重要选项
+categories: skill
+tags: web技术
+---
+
+<h4>Vue.js组件的重要选项</h4>
+  <pre><code>
+      new Vue({
+      data:{...}
+      methods:{...}
+      watch:{...}
+    })
+  </code></pre>
+<h5>1：data</h5>
+  <p>对象Vue的所有数据，放在data里面。data里是对象。实现数据双向绑定。</p>
+<h5>2：methods</h5>
+  <p>方法。</p>
+<h5>3：watch</h5>
+  <p>监听。监听data里的对象，同时提供方法。数据改变后进行的操作。</p>
+<h5>4：模板指令</h5>
+  <p>和vue对象的粘合剂</p>
+<txt>数据渲染：v-text、v-html、{{}}</txt>
+  <p>（1）{{}}：v-text的简写方式</p>
+  <p>（2）v-text：处理了html变为字段</p>
+  <p>（3）v-html：保存了html结构</p>
+<txt>控制模块隐藏：</txt>
+  <p>（1）v-if：直接不渲染dom元素</p>
+  <p>（2）v-show：css display：none</p>
+<txt>渲染循环列表：v-for v-for='item in items'</txt>
+  <p>（1）item 是在循环体里的每一项</p>
+  <p>（2）items 是vue对象数据源里的列表</p>
+<txt>事件绑定：v-on</txt>
+  <cd>e.g：v-on：click="doThis"</cd>
+  <p>简写：</p>
+  <cd>@click="doThis"</cd>
+  <p>其中doThis是methods里的方法。</p>
+<txt>属性绑定：v-bing</txt>
+  <cd>e.g：v-bing:class="{red:isRed}"</cd>
+  <p>简写：</p>
+  <cd>:class="{red:isRed}"</cd>
+  <p>{class的名字，对是否有这个class的判断}-是布尔值<br/>
+  [classA, classB]则为data中classA的字符串，直接赋值给class值的。-是字符串<br/>
+  [classA,{class:isB}]-classA是字符串，而class：isB是布尔值，其中为true的话，是要展现classB的。</p>
+
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-web技术</p>
