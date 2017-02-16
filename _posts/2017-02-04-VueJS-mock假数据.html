@@ -1,0 +1,26 @@
+---
+layout: post
+title: Vue-mock假数据
+categories: skill
+tags: web技术
+---
+<h4>Vue mock假数据</h4>
+<p>在dev-serve.js下找到var app = express()接口 //这是调用node sever的接口</p>
+<p>添加:</p>
+<pre><code>
+var appData = require('你的json假数据文件')
+var 变量名 = appData.假数据中的接口 //eg：var seller = appData.seller
+var apiRoutes = express.Router() //连接路由
+apiRoutes.get('/变量名'，function (req, res) { //function(请求数据，响应数据)
+    res.json({
+	error:0，  //一般json都会有一个判断数据正确性的接口，0为正确请求，0、1、2等等当然都可以由客户决定
+	data: 变量名
+  })
+})
+app.ues('/api', apiRoutes) //用户使用'/api'接口调用apiRoutes 
+</code></pre>
+<p>测试检查时在cmd跑npm run dev, 在端口号8080后填写/api/你定的json的变量名 跳出到你的json文件则设置成功。</p>
+<p>在chrome浏览器F12下格式json，安装chrome的浏览器插件jsonview即可。</p>
+
+
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-web技术</p>

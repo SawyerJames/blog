@@ -1,0 +1,31 @@
+---
+layout: post
+title: 组件的那点小事
+categories: skill
+tags: web技术
+---
+<h4>组件的那点小事</h4>
+<p>组件化：扩展HTML元素，封装可重用的代码。</p>
+
+<h5>组件设计原则：</h5>
+<p>1：页面上每个独立的可视、可交互区域为一个组件。</p>
+<p>2：每个组件对应一个工程目录，组件所需要的各种资源在这个目录下就近维护。
+在vue.js中，可以通过.vue文件把组件依赖的模板、js、样式等都写在一个文件中。</p>
+<p>3：页面不过是组件的容器，组件可以嵌套自由组合形成完整的页面。</p>
+
+<h5>Vue.js 组件的划分与实现：</h5>
+<p>1：功能模块：select，pagination...</p>
+<p>2：页面区域：header，footer，sidebar...</p>
+<p>3：APP.vue是所有组件的入口</p>
+<p>4：重要选项components，当你的组件设计完毕后，使用import 变量名 from '组件地址' ,导入后，还需要components数组对象中注册才可以在页面中使用。比如注册了footer，在页面中使用就是<pre><footer></footer></pre>即可实现footer.vue中的设计。</p>
+
+<h5>Vue.js 组件间的通信：</h5>
+<p>使用props进行通信。props：['msg'],</p>
+<p>即可在各组件间使用msg对象。比如：</p>
+<pre><code>
+<footer msg='something interesting'></footer> //只适用于父组件向子组件传递信息
+</code></pre>
+
+
+
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-web技术</p>
