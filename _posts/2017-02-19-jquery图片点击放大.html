@@ -8,20 +8,20 @@ tags: web技术
 <h4>jquery图片点击放大</h4>
 <p>jquery上的一个小技术，如果你想点击一个缩略图，能让其放大。可以在页面上渲染一层遮罩层，获取到所点击图片的路径，插入到新的一层上，即可实现。原理很简单，仅仅使用了闭包和遍历，提供思路源码，仅供参考。(使用ES6会是逻辑更加简单，详请请参考我的转载blog：30分钟掌握es6核心内容)</p>
 <pre><code>
-	<script type="text/javascript">
+	&ltscript type="text/javascript"&gt
 	    $(function() {
 	        var img = $('table').find('img');
 	        var arr = [],
 	            data;
 
 	        function showImg(data) {
-	            var temp = ("<div id='temp'>" +
-	                "<div class='mask'></div>" +
-	                "<div class='imgTemp'>" +
-	                "<img src='" + data + "'>" +
-	                "<span class='exit'></span>" +
-	                "</div>" +
-	                "</div>");
+	            var temp = ("&ltdiv id='temp'&gt" +
+	                "&ltdiv class='mask'>&lt/div&gt" +
+	                "&ltdiv class='imgTemp'&gt" +
+	                "&ltimg src='" + data + "'&gt" +
+	                "&ltspan class='exit'>&lt/span&gt" +
+	                "&lt/div&gt" +
+	                "&lt/div&gt");
 	            var exitBtn;
 	            var onclick = function(e) {
 	                $('body').prepend(temp);
@@ -38,7 +38,7 @@ tags: web技术
 	            img[i].onclick = showImg(data);
 	        }
 	    })
-	</script>
+	&lt/script&gt
 </code></pre>
 
 <p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-web技术</p>
