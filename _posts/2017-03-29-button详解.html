@@ -1,0 +1,25 @@
+---
+layout: post
+title: button详解
+categories: skill
+tags: 网站技术
+---
+
+<h4>button详解</h4>
+<p>关于button：button的功能性要放在form表单中才能有所体现，比如reset，submit等。当然你也可以通过阻止它的默认行为来达到你想要的目的；</p>
+<h4>button的type类型有三种：</h4>
+<p>1、<txt>type="submit"</txt>提交类型的按钮是除了IE之外的浏览器默认值，也就意味着如果没有type，它依然提供提交的功能；</p>
+<p>2、<txt>type="button"</txt>可点击按钮，属于IE的默认值。</p>
+<p>3、<txt>type="reset"</txt>重置按钮，与submit同时属于form的应用范围。在form表单中提供重置选择的功能；</p>
+<h4>值得注意的是：</h4>
+<p>1、为了保持button的兼容性，我们需要在使用button的时候添加type属性，不然IE和非IE的类型会完全不同！</p>
+<p>2、提交类型的button在表单中是默认提交的！</p>
+<h4>如果你想要使用button，又不想使它默认提交：提供两种方法：<h4>
+<p>1：使用type="button"替换type="submit"；并在js中添加提交事件，监听button的点击事件；</p>
+<p>2：阻止其默认行为。在jq下可以通过return false。具体请参考jQ API中的阻止事件默认行为；</p>
+<h4>强烈建议：<h4>
+<p>如果表单是通过onsubmit进行Ajax提交，注意将表单提交按钮input的type属性设为button，尽量不要设置为submit类型。</p>
+<p>另外，在提交事件发出后，最好将提交按钮设置为disabled，防止由于网络延时问题，让用户有机会进行多次点击重复提交。onclick事件里面执行 $(this).attr('disabled','disabled'); 在点击一次后立马将按钮设置为不可使用。</p>
+
+--------------------------------------------------------------------------
+<p>{{ page.date | date_to_string}}&nbsp&nbsp&nbsp&nbsp&nbsp@SawyerJames-转载请表明出处</p>
